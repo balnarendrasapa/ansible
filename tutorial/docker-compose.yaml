@@ -8,6 +8,7 @@ services:
         - PASSWORD=pass1
     ports:
       - "2222:22"
+    hostname: container1
   container2:
     build:
       context: ../
@@ -16,3 +17,4 @@ services:
         - PASSWORD=pass2
     ports:
       - "2223:22"
+    hostname: container2
