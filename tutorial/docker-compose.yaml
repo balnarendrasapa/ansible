@@ -1,0 +1,18 @@
+version: "3"
+services:
+  container1:
+    build:
+      context: ../
+      args:
+        - USERNAME=user1
+        - PASSWORD=pass1
+    ports:
+      - "2222:22"
+  container2:
+    build:
+      context: ../
+      args:
+        - USERNAME=user2
+        - PASSWORD=pass2
+    ports:
+      - "2223:22"

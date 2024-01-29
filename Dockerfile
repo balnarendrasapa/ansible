@@ -23,5 +23,8 @@ RUN mkdir /run/sshd
 # Expose SSH port
 EXPOSE 22
 
+# Update and install vim
+RUN apt-get update && apt-get install -y vim
+
 # Start the SSH server
 CMD ["/usr/sbin/sshd", "-D"]
