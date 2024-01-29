@@ -10,4 +10,4 @@ services:
     ports:
       - "2222:22"
     volumes:
-      - ./:/home/user
+      - ./:/home/user/ansible
