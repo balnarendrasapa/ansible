@@ -2,11 +2,6 @@
   apt: name=zsh
   tags: &tags_for_zsh_tasks [ 'install', 'productivity', 'dotfiles', 'zsh' ]
   become: true
-    
-- name: Change shell to zsh
-  shell: chsh -s $(which zsh)
-  tags: *tags_for_zsh_tasks
-  become: true
 
 - name: Check that the somefile.conf exists
   stat:
@@ -23,4 +18,15 @@
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
     dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
+  tags: *tags_for_zsh_tasks
+
+- name: Change shell to zsh
+  lineinfile:
+    path: ~/.bashrc
+    line: "zsh"
+    insertafter: EOF
+  tags: *tags_for_zsh_tasks
+
+- name: add zsh-autosuggestions to plugins in zshrc
+  shell: sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions)/g' ~/.zshrc
   tags: *tags_for_zsh_tasks
