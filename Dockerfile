@@ -13,7 +13,7 @@ RUN apt-get update \
     && apt-get install -y openssh-server sudo\
     && rm -rf /var/lib/apt/lists/* \
     && apt-get update \
-    && apt-get install -y tzdata vim ansible
+    && apt-get install -y tzdata vim ansible curl
 
 # Create an SSH user and set a password (replace 'user' and 'password' with your desired values)
 RUN useradd -m -s /bin/bash ${USERNAME} \
@@ -24,6 +24,7 @@ RUN echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Create the missing privilege separation directory
 RUN mkdir /run/sshd
+RUN mkdir ~/ansible
 
 # Expose SSH port
 EXPOSE 22
