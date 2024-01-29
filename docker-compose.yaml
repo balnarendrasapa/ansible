@@ -6,6 +6,7 @@ services:
       args:
         - USERNAME=user
         - PASSWORD=pass
+    hostname: bnsap
     ports:
       - "2222:22"
     volumes:
