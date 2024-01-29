@@ -2,3 +2,4 @@
 .cache/
 .viminfo
 .ansible/
+.bash_history
