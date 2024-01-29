@@ -5,10 +5,15 @@ FROM ubuntu:latest
 ARG USERNAME
 ARG PASSWORD
 
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
+
 # Install the OpenSSH server
 RUN apt-get update \
     && apt-get install -y openssh-server sudo\
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get update \
+    && apt-get install -y tzdata vim ansible
 
 # Create an SSH user and set a password (replace 'user' and 'password' with your desired values)
 RUN useradd -m -s /bin/bash ${USERNAME} \
@@ -22,9 +27,6 @@ RUN mkdir /run/sshd
 
 # Expose SSH port
 EXPOSE 22
-
-# Update and install vim
-RUN apt-get update && apt-get install -y vim
 
 # Start the SSH server
 CMD ["/usr/sbin/sshd", "-D"]
