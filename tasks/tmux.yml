@@ -1,0 +1,24 @@
+- name: Install Tmux
+  apt: name=tmux
+  become: true
+
+- name: Change shell to zsh
+  lineinfile:
+    path: ~/.zshrc
+    line: "tmux"
+    insertafter: EOF
+
+- name: Install oh-my-tmux
+  ansible.builtin.git:
+    repo: 'https://github.com/gpakosz/.tmux.git'
+    dest: "~/.tmux"
+
+- name: symlink .tmux.conf
+  command: 
+    cmd: ln -s -f .tmux/.tmux.conf
+    chdir: "~"
+
+- name: copy .tmux.conf.local
+  copy:
+    src: ~/.tmux/.tmux.conf.local
+    dest: "~/.tmux.conf.local"
