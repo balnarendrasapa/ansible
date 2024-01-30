@@ -14,6 +14,6 @@
       - core
   tasks:
     - include: tasks/git.yml
-    - include: tasks/zsh-setup.yml
     - include: tasks/tmux.yml
+    - include: tasks/zsh-setup.yml
 
