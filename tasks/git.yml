@@ -12,6 +12,6 @@
   git_config:
     name: user.name
     scope: global
-    value: "bnsap"
+    value: "Bal Narendra Sapa"
   tags:
   - git-personal
