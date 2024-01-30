@@ -30,3 +30,13 @@
 - name: add zsh-autosuggestions to plugins in zshrc
   shell: sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions)/g' ~/.zshrc
   tags: *tags_for_zsh_tasks
+
+- name: export variables to ~/.zshrc
+  lineinfile:
+    path: ~/.zshrc
+    line: "export LANG='en_US.UTF-8'"
+    insertafter: EOF
+  tags: *tags_for_zsh_tasks
+
+- name: commands to make git plugin fast
+  shell: git config --global --add oh-my-zsh.hide-status 1 && git config --global --add oh-my-zsh.hide-dirty 1
