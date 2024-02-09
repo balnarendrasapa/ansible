@@ -2,8 +2,8 @@
 FROM ubuntu:latest
 
 # Define a build argument for the username
-ARG USERNAME
-ARG PASSWORD
+ARG USERNAME=username
+ARG PASSWORD=password
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
