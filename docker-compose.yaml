@@ -3,9 +3,6 @@ services:
   container1:
     build:
       context: ./
-      args:
-        - USERNAME=user
-        - PASSWORD=pass
     hostname: bnsap
     ports:
       - "2222:22"
